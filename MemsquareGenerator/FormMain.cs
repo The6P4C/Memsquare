@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MemsquareGenerator {
@@ -199,6 +200,21 @@ namespace MemsquareGenerator {
 			uiProgressBar.Value = 0;
 			uiCancel.Enabled = false;
 			uiGenerate.Enabled = true;
+		}
+
+		private void visibleChannels_Click(object sender, EventArgs e) {
+			CheckBox checkBoxSender = sender as CheckBox;
+
+			List<bool> states = new List<bool> {
+				uiRedChannelVisible.Checked,
+				uiGreenChannelVisible.Checked,
+				uiBlueChannelVisible.Checked
+			};
+
+			int numberChecked = states.Where(x => x).Count();
+			if (checkBoxSender.Checked == false || numberChecked != 1) {
+				checkBoxSender.Checked = !checkBoxSender.Checked;
+			}
 		}
 	}
 }

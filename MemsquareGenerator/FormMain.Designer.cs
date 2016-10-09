@@ -223,6 +223,7 @@
 			// 
 			// uiBlueChannelVisible
 			// 
+			this.uiBlueChannelVisible.AutoCheck = false;
 			this.uiBlueChannelVisible.AutoSize = true;
 			this.uiBlueChannelVisible.Checked = true;
 			this.uiBlueChannelVisible.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -233,9 +234,11 @@
 			this.uiBlueChannelVisible.Text = "Blue";
 			this.uiBlueChannelVisible.UseVisualStyleBackColor = true;
 			this.uiBlueChannelVisible.CheckStateChanged += new System.EventHandler(this.visibleChannels_CheckStateChanged);
+			this.uiBlueChannelVisible.Click += new System.EventHandler(this.visibleChannels_Click);
 			// 
 			// uiGreenChannelVisible
 			// 
+			this.uiGreenChannelVisible.AutoCheck = false;
 			this.uiGreenChannelVisible.AutoSize = true;
 			this.uiGreenChannelVisible.Checked = true;
 			this.uiGreenChannelVisible.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -246,9 +249,11 @@
 			this.uiGreenChannelVisible.Text = "Green";
 			this.uiGreenChannelVisible.UseVisualStyleBackColor = true;
 			this.uiGreenChannelVisible.CheckStateChanged += new System.EventHandler(this.visibleChannels_CheckStateChanged);
+			this.uiGreenChannelVisible.Click += new System.EventHandler(this.visibleChannels_Click);
 			// 
 			// uiRedChannelVisible
 			// 
+			this.uiRedChannelVisible.AutoCheck = false;
 			this.uiRedChannelVisible.AutoSize = true;
 			this.uiRedChannelVisible.Checked = true;
 			this.uiRedChannelVisible.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -259,6 +264,7 @@
 			this.uiRedChannelVisible.Text = "Red";
 			this.uiRedChannelVisible.UseVisualStyleBackColor = true;
 			this.uiRedChannelVisible.CheckStateChanged += new System.EventHandler(this.visibleChannels_CheckStateChanged);
+			this.uiRedChannelVisible.Click += new System.EventHandler(this.visibleChannels_Click);
 			// 
 			// uiInputFileDialog
 			// 
