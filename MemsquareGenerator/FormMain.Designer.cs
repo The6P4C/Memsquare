@@ -42,11 +42,11 @@
 			this.uiBlueChannelVisible = new System.Windows.Forms.CheckBox();
 			this.uiGreenChannelVisible = new System.Windows.Forms.CheckBox();
 			this.uiRedChannelVisible = new System.Windows.Forms.CheckBox();
-			this.uiMemsquareView = new System.Windows.Forms.PictureBox();
 			this.uiInputFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.uiSave = new System.Windows.Forms.Button();
 			this.uiWorker = new System.ComponentModel.BackgroundWorker();
 			this.uiSaveDialog = new System.Windows.Forms.SaveFileDialog();
+			this.uiMemsquareView = new MemsquareGenerator.InterpolatedPictureBox();
 			this.uiColoringModeGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.uiBlockSize)).BeginInit();
 			this.uiVisibleChannelsGroupBox.SuspendLayout();
@@ -255,19 +255,6 @@
 			this.uiRedChannelVisible.UseVisualStyleBackColor = true;
 			this.uiRedChannelVisible.CheckStateChanged += new System.EventHandler(this.visibleChannels_CheckStateChanged);
 			// 
-			// uiMemsquareView
-			// 
-			this.uiMemsquareView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.uiMemsquareView.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.uiMemsquareView.Location = new System.Drawing.Point(224, 12);
-			this.uiMemsquareView.Name = "uiMemsquareView";
-			this.uiMemsquareView.Size = new System.Drawing.Size(512, 512);
-			this.uiMemsquareView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.uiMemsquareView.TabIndex = 10;
-			this.uiMemsquareView.TabStop = false;
-			// 
 			// uiInputFileDialog
 			// 
 			this.uiInputFileDialog.Filter = "All Files (*.*)|*.*";
@@ -294,6 +281,20 @@
 			// uiSaveDialog
 			// 
 			this.uiSaveDialog.Filter = "PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
+			// 
+			// uiMemsquareView
+			// 
+			this.uiMemsquareView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.uiMemsquareView.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.uiMemsquareView.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+			this.uiMemsquareView.Location = new System.Drawing.Point(224, 12);
+			this.uiMemsquareView.Name = "uiMemsquareView";
+			this.uiMemsquareView.Size = new System.Drawing.Size(512, 512);
+			this.uiMemsquareView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.uiMemsquareView.TabIndex = 10;
+			this.uiMemsquareView.TabStop = false;
 			// 
 			// FormMain
 			// 
@@ -348,7 +349,7 @@
 		private System.Windows.Forms.CheckBox uiBlueChannelVisible;
 		private System.Windows.Forms.CheckBox uiGreenChannelVisible;
 		private System.Windows.Forms.CheckBox uiRedChannelVisible;
-		private System.Windows.Forms.PictureBox uiMemsquareView;
+		private InterpolatedPictureBox uiMemsquareView;
 		private System.Windows.Forms.OpenFileDialog uiInputFileDialog;
 		private System.Windows.Forms.Button uiSave;
 		private System.ComponentModel.BackgroundWorker uiWorker;
