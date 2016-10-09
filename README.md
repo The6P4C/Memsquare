@@ -1,4 +1,4 @@
-# Memsquare
+# MemsquareGenerator
 A C# implementation of Micah Scott (scanlime)'s memsquare memory visualisation technique. It was originally part of the [coastermelt](https://github.com/scanlime/coastermelt) project, and the Python implementation can be found [here](https://github.com/scanlime/coastermelt/blob/master/backdoor/memsquare.py).
 
 ## Example
