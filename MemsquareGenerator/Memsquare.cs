@@ -81,7 +81,7 @@ namespace MemsquareGenerator {
 				})
 			},
 			{
-				"Empty",
+				"Zero",
 				new ColoringModeFunction((byte[] block) => {
 					return 0;
 				})

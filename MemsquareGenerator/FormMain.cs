@@ -34,7 +34,7 @@ namespace MemsquareGenerator {
 			// they were added, so this doesn't have to work but it does
 			uiColoringModeRed.SelectedIndex = 0;
 			uiColoringModeGreen.SelectedIndex = 1;
-			uiColoringModeBlue.SelectedIndex = 2;
+			uiColoringModeBlue.SelectedIndex = 3;
 
 			uiStatus.Text = "";
 		}
