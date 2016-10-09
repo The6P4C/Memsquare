@@ -46,6 +46,7 @@
 			this.uiSave = new System.Windows.Forms.Button();
 			this.uiWorker = new System.ComponentModel.BackgroundWorker();
 			this.uiSaveDialog = new System.Windows.Forms.SaveFileDialog();
+			this.uiStatus = new System.Windows.Forms.Label();
 			this.uiMemsquareView = new MemsquareGenerator.InterpolatedPictureBox();
 			this.uiColoringModeGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.uiBlockSize)).BeginInit();
@@ -282,6 +283,16 @@
 			// 
 			this.uiSaveDialog.Filter = "PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
 			// 
+			// uiStatus
+			// 
+			this.uiStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.uiStatus.AutoSize = true;
+			this.uiStatus.Location = new System.Drawing.Point(221, 530);
+			this.uiStatus.Name = "uiStatus";
+			this.uiStatus.Size = new System.Drawing.Size(65, 13);
+			this.uiStatus.TabIndex = 13;
+			this.uiStatus.Text = "{RUNTIME}";
+			// 
 			// uiMemsquareView
 			// 
 			this.uiMemsquareView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -295,6 +306,7 @@
 			this.uiMemsquareView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.uiMemsquareView.TabIndex = 10;
 			this.uiMemsquareView.TabStop = false;
+			this.uiMemsquareView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.uiMemsquareView_MouseMove);
 			// 
 			// FormMain
 			// 
@@ -302,6 +314,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(748, 565);
+			this.Controls.Add(this.uiStatus);
 			this.Controls.Add(this.uiSave);
 			this.Controls.Add(this.uiMemsquareView);
 			this.Controls.Add(this.uiVisibleChannelsGroupBox);
@@ -354,6 +367,7 @@
 		private System.Windows.Forms.Button uiSave;
 		private System.ComponentModel.BackgroundWorker uiWorker;
 		private System.Windows.Forms.SaveFileDialog uiSaveDialog;
+		private System.Windows.Forms.Label uiStatus;
 	}
 }
 

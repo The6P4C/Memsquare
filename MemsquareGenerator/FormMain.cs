@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -13,6 +14,10 @@ namespace MemsquareGenerator {
 		};
 
 		private Bitmap memsquare;
+		private int fileSize;
+		private int blockSize;
+		private int blockCount;
+		private int sideLength;
 		private Bitmap memsquareView;
 
 		public FormMain() {
@@ -30,6 +35,8 @@ namespace MemsquareGenerator {
 			uiColoringModeRed.SelectedIndex = 0;
 			uiColoringModeGreen.SelectedIndex = 1;
 			uiColoringModeBlue.SelectedIndex = 2;
+
+			uiStatus.Text = "";
 		}
 
 		private void DisplayMemsquare() {
@@ -86,6 +93,7 @@ namespace MemsquareGenerator {
 				memsquareView = null;
 			}
 
+			uiStatus.Text = "";
 			uiGenerate.Enabled = false;
 			uiCancel.Enabled = true;
 		}
@@ -96,6 +104,43 @@ namespace MemsquareGenerator {
 
 		private void visibleChannels_CheckStateChanged(object sender, EventArgs e) {
 			DisplayMemsquare();
+		}
+
+		private void uiMemsquareView_MouseMove(object sender, MouseEventArgs e) {
+			if (memsquare == null) return;
+
+			Point? imagePosition = uiMemsquareView.ConvertMousePositionToImagePosition(e.Location);
+
+			if (imagePosition.HasValue) {
+				string formatString = "x: {0}\ty: {1}\tblock {2} of {3} (0x{4:X}-0x{5:X}){6}\tr: {7:X}\tg: {8:X}\tb: {9:X}";
+				formatString = formatString.Replace("\t", "    ");
+
+				int x = imagePosition.Value.X;
+				int y = imagePosition.Value.Y;
+
+				int d = Utility.XYToHilbertD(sideLength, new Tuple<int, int>(x, y));
+
+				int startAddress = d * blockSize;
+				int endAddress = (d + 1) * blockSize - 1;
+
+				bool isInFile = startAddress <= fileSize;
+
+				Color c = memsquare.GetPixel(x, y);
+
+				uiStatus.Text = string.Format(
+					formatString,
+					x,
+					y,
+					d,
+					blockSize,
+					startAddress,
+					endAddress,
+					isInFile ? "" : " - not in file",
+					c.R,
+					c.G,
+					c.B
+				);
+			}
 		}
 
 		private void uiSave_Click(object sender, EventArgs e) {
@@ -121,6 +166,12 @@ namespace MemsquareGenerator {
 		private void uiWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e) {
 			byte[] fileData = File.ReadAllBytes(uiInputFileLocation.Text);
 			int blockSize = (int) uiBlockSize.Value;
+
+			fileSize = fileData.Length;
+			// Use this since we're talking about the instance variable
+			this.blockSize = blockSize;
+			blockCount = Memsquare.GetBlockCount(fileSize, blockSize);
+			sideLength = Memsquare.GetSideLength(fileSize, blockSize);
 
 			Memsquare.ColoringMode cm = new Memsquare.ColoringMode(
 				Memsquare.COLORING_MODES["Average"],

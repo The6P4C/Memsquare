@@ -103,11 +103,23 @@ namespace MemsquareGenerator {
 			);
 		}
 
-		private static int GetBlockCount(int fileSize, int blockSize) {
+		/// <summary>
+		/// Get the amount of blocks in a memsquare based on a file size and block size.
+		/// </summary>
+		/// <param name="fileSize">The file's size in bytes</param>
+		/// <param name="blockSize">The size of each block in bytes</param>
+		/// <returns>The amount of blocks in the memsquare</returns>
+		public static int GetBlockCount(int fileSize, int blockSize) {
 			return NearestSquarePowerOfTwo((double) fileSize / blockSize);
 		}
 
-		private static int GetSideLength(int fileSize, int blockSize) {
+		/// <summary>
+		/// Get the side length of a memsquare image based on a file size and block size.
+		/// </summary>
+		/// <param name="fileSize">The file's size in bytes</param>
+		/// <param name="blockSize">The size of each block in bytes</param>
+		/// <returns>The side length of the memsquare</returns>
+		public static int GetSideLength(int fileSize, int blockSize) {
 			return (int) Math.Sqrt(GetBlockCount(fileSize, blockSize));
 		}
 
