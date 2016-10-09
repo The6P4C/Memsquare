@@ -112,7 +112,7 @@ namespace MemsquareGenerator {
 			Point? imagePosition = uiMemsquareView.ConvertMousePositionToImagePosition(e.Location);
 
 			if (imagePosition.HasValue) {
-				string formatString = "x: {0}\ty: {1}\tblock {2} of {3} (0x{4:X}-0x{5:X}){6}\tr: {7:X}\tg: {8:X}\tb: {9:X}";
+				string formatString = "block {0} of {1} (0x{2:X}-0x{3:X}){4}\tr: {5:X}\tg: {6:X}\tb: {7:X}";
 				formatString = formatString.Replace("\t", "    ");
 
 				int x = imagePosition.Value.X;
@@ -129,10 +129,8 @@ namespace MemsquareGenerator {
 
 				uiStatus.Text = string.Format(
 					formatString,
-					x,
-					y,
 					d,
-					blockSize,
+					blockCount,
 					startAddress,
 					endAddress,
 					isInFile ? "" : " - not in file",
