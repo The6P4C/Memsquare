@@ -173,11 +173,13 @@ namespace MemsquareGenerator {
 			blockCount = Memsquare.GetBlockCount(fileSize, blockSize);
 			sideLength = Memsquare.GetSideLength(fileSize, blockSize);
 
-			Memsquare.ColoringMode cm = new Memsquare.ColoringMode(
-				Memsquare.COLORING_MODES["Average"],
-				Memsquare.COLORING_MODES["Sum (mod 256)"],
-				Memsquare.COLORING_MODES["Empty"]
-			);
+			Memsquare.ColoringMode cm = new Memsquare.ColoringMode();
+
+			this.Invoke(new Action(() => {
+				cm.Red = Memsquare.COLORING_MODES[(string) uiColoringModeRed.SelectedItem];
+				cm.Green = Memsquare.COLORING_MODES[(string) uiColoringModeGreen.SelectedItem];
+				cm.Blue = Memsquare.COLORING_MODES[(string) uiColoringModeBlue.SelectedItem];
+			}));
 
 			memsquare = Memsquare.Generate(uiWorker, fileData, blockSize, cm);
 		}
@@ -187,7 +189,14 @@ namespace MemsquareGenerator {
 		}
 
 		private void uiWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e) {
-			DisplayMemsquare();
+			if (e.Error != null) {
+				MessageBox.Show(string.Format(
+					"An error occurred whilst generating the memsquare:\n\n{0}",
+					e.Error.ToString()
+				));
+			} else {
+				DisplayMemsquare();
+			}
 
 			uiProgressBar.Value = 0;
 			uiCancel.Enabled = false;

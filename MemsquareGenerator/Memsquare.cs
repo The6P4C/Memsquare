@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 
 namespace MemsquareGenerator {
@@ -51,6 +52,32 @@ namespace MemsquareGenerator {
 					}
 
 					return (byte) (sum % 256);
+				})
+			},
+			{
+				"Entropy",
+				new ColoringModeFunction((byte[] block) => {
+					if (block.Length == 0) return 0;
+
+					double entropy = 0;
+
+					Dictionary<byte, int> seen = new Dictionary<byte, int>();
+					for (int i = 0; i < 256; ++i) {
+						seen.Add((byte) i, 0);
+					}
+
+					for (int i = 0; i < block.Length; ++i) {
+						seen[block[i]] = seen[block[i]] + 1;
+					}
+
+					for (int i = 0; i < 256; ++i) {
+						double probabilityX = (double) seen[(byte) i] / block.Length;
+						if (probabilityX > 0) {
+							entropy -= probabilityX * Math.Log(probabilityX, 2);
+						}
+					}
+
+					return (byte) (entropy * 32);
 				})
 			},
 			{
