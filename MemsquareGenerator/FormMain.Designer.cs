@@ -97,6 +97,7 @@
 			// 
 			// uiColoringModeBlue
 			// 
+			this.uiColoringModeBlue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.uiColoringModeBlue.FormattingEnabled = true;
 			this.uiColoringModeBlue.Location = new System.Drawing.Point(6, 112);
 			this.uiColoringModeBlue.Name = "uiColoringModeBlue";
@@ -114,6 +115,7 @@
 			// 
 			// uiColoringModeGreen
 			// 
+			this.uiColoringModeGreen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.uiColoringModeGreen.FormattingEnabled = true;
 			this.uiColoringModeGreen.Location = new System.Drawing.Point(6, 72);
 			this.uiColoringModeGreen.Name = "uiColoringModeGreen";
@@ -131,6 +133,7 @@
 			// 
 			// uiColoringModeRed
 			// 
+			this.uiColoringModeRed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.uiColoringModeRed.FormattingEnabled = true;
 			this.uiColoringModeRed.Location = new System.Drawing.Point(6, 32);
 			this.uiColoringModeRed.Name = "uiColoringModeRed";
