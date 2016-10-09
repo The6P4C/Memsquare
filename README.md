@@ -9,7 +9,7 @@ This is a memsquare generated from a firmware image.
 **Block Size**: 8 bytes  
 **Red Channel**: Average  
 **Green Channel**: Sum (mod 256)  
-**Blue Channel**: Empty
+**Blue Channel**: Zero
 
 ### Compressed Image
 ![An example memsquare](img/small.png)
