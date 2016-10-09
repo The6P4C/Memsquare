@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.uiInputFileLabel = new System.Windows.Forms.Label();
 			this.uiInputFileLocation = new System.Windows.Forms.TextBox();
 			this.uiInputFileBrowse = new System.Windows.Forms.Button();
@@ -330,6 +331,7 @@
 			this.Controls.Add(this.uiInputFileBrowse);
 			this.Controls.Add(this.uiInputFileLocation);
 			this.Controls.Add(this.uiInputFileLabel);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(764, 604);
 			this.Name = "FormMain";
 			this.Text = "Memsquare Generator";
