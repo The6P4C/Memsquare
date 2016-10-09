@@ -55,7 +55,7 @@ namespace MemsquareGenerator {
 				})
 			},
 			{
-				"Entropy",
+				"Entropy (slow!)",
 				new ColoringModeFunction((byte[] block) => {
 					if (block.Length == 0) return 0;
 
