@@ -184,7 +184,7 @@ namespace MemsquareGenerator {
 				double percentage = (i + 1) / (double) blockCount * 100.0;
 
 				// Don't report the percentage too often - otherwise the UI locks up entirely
-				if (worker != null && i % 5 == 0) {
+				if (worker != null && i % (blockCount / 1000) == 0) {
 					worker.ReportProgress((int) percentage);
 				}
 			}
