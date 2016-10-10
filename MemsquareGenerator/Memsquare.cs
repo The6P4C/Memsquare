@@ -81,6 +81,22 @@ namespace MemsquareGenerator {
 				})
 			},
 			{
+				"Percent Printable Characters",
+				new ColoringModeFunction((byte[] block) => {
+					if (block.Length == 0) return 0;
+
+					int printableCount = 0;
+					for (int i = 0; i < block.Length; ++i) {
+						byte v = block[i];
+						if (v >= 0x20 && v <= 0x7E) {
+							++printableCount;
+						}
+					}
+
+					return (byte) (printableCount / block.Length * 255);
+				})
+			},
+			{
 				"Zero",
 				new ColoringModeFunction((byte[] block) => {
 					return 0;

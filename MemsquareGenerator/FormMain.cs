@@ -33,9 +33,9 @@ namespace MemsquareGenerator {
 
 			// There's no guarantee (I don't think) that the dictionary keys will be in the order
 			// they were added, so this doesn't have to work but it does
-			uiColoringModeRed.SelectedIndex = 0;
-			uiColoringModeGreen.SelectedIndex = 1;
-			uiColoringModeBlue.SelectedIndex = 3;
+			uiColoringModeRed.SelectedIndex = coloringModesNamesList.IndexOf("Average");
+			uiColoringModeGreen.SelectedIndex = coloringModesNamesList.IndexOf("Sum (mod 256)");
+			uiColoringModeBlue.SelectedIndex = coloringModesNamesList.IndexOf("Zero");
 
 			uiStatus.Text = "";
 		}
